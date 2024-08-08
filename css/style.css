@@ -1,4 +1,63 @@
 /* CUSTOM PROPS */
+:root {
+    --text-color: #111517;
+    --body-bg: #fafafa;
+    --el-bg: #fff;
+    --box-shadow: 0px 2px 4px rgba(0, 0, 0,0.0562);
+}
+
+/* FONTS */
+@font-face {
+    font-family: 'Nunito Sans 7pt';
+    src: url('../fonts/NunitoSans7pt-ExtraBold.woff2') format('woff2'),
+        url('../fonts/NunitoSans7pt-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans 7pt';
+    src: url('../fonts/NunitoSans7pt-Light.woff2') format('woff2'),
+        url('../fonts/NunitoSans7pt-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans 7pt';
+    src: url('../fonts/NunitoSans7pt-SemiBold.woff2') format('woff2'),
+        url('../fonts/NunitoSans7pt-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans 7pt';
+    src: url('../fonts/NunitoSans7pt-Regular.woff2') format('woff2'),
+        url('../fonts/NunitoSans7pt-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-color: transparent;
+  -webkit-text-fill-color: inherit;
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+
 
 /* GLOBAL */
 html {
@@ -21,11 +80,19 @@ body {
     padding: 0;
     margin: 0;
     font-size: 16px;
-    line-height: 1.5;
-    font-family: "Roboto","Arial",sans-serif;
+    line-height: normal;
+    font-family: "Nunito Sans 7pt","Arial",sans-serif;
+    font-weight: normal;
     flex-direction: column;
-    background-color: #fff;
-    color: #222;
+    background-color: var(--body-bg);
+    color: var(--text-color);
+}
+
+/* DARK MODE */
+.dark-mode {
+    --text-color: #fff;
+    --body-bg: #202c36;
+    --el-bg: #2b3844;
 }
 
 img {
@@ -38,12 +105,186 @@ main {
     flex-grow: 1;
 }
 
-/* CONTAINER */
-.container {
-    max-width: 1200px;
-    width: 100%;
+.nav {
+    background-color: var(--el-bg);
+    box-shadow: var(--box-shadow);
+    /* padding-top: 24px;
+    padding-bottom: 24px; */
+    /* margin-bottom: 48px; */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+.navbar-brand:hover {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.btn-custom {
+    font-weight: 600;
+    background-color: transparent;
+    position: relative;
+    padding-left: 36px;
+    color: var(--text-color)
+}
+
+.btn-custom::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/dark.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    top: 50%;
+    left: 4px;
+    transform: translate(0%,-50%);
+}
+
+.btn-custom-back {
+    padding-top: 6px;
+    padding-bottom: 6px;
     padding-left: 50px;
-    padding-right: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-right: 24px;
+    background-color: var(--el-bg);
+    box-shadow: 0 0 7px rgba(0, 0, 0,0.29);
+}
+
+.btn-custom-back:hover {
+    color: var(--text-color);
+}
+
+.btn-custom-back::before {
+    left: 20px;
+    background-image: url("../img/call-made.svg");
+}
+
+.dark-mode .btn-custom::before {
+    background-image: url("../img/light.svg");
+}
+
+.dark-mode .btn-custom-back::before {
+    background-image: url("../img/call-made-light.svg");
+}
+
+.dark-mode .input-group svg path {
+    fill: #fff;
+}
+
+.input-group__icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 50%;
+    left: 32px;
+    transform: translate(-50%, -50%);
+    z-index: 30;
+}
+
+.form-control {
+    position: relative;
+    padding: 18px 74px;
+    border-radius: 5px!important;
+    background-color: var(--el-bg);
+    color: var(--text-color);
+    border: 0;
+    box-shadow: var(--box-shadow);
+    font-size: 14px;
+}
+
+.form-control:focus {
+    background-color: var(--el-bg);
+    color: var(--text-color);
+}
+
+.dropdown {
+    width: 100%;
+    padding: 18px 24px;
+    outline: none;
+    border: 0;
+    box-shadow: var(--box-shadow);
+    background-color: var(--el-bg);
+    color: var(--text-color);
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.custom-card {
+    background-color: var(--el-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.custom-card__info {
+    /* padding: 24px 24px 46px; */
+    color: var(--text-color);
+}
+.custom-card__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+.custom-cart__details {
+    display: flex;
+    align-items: start;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.custom-cart__details dt {
+    font-weight: 600;
+    margin-right: 5px;
+    white-space: nowrap;
+}
+
+.custom-card__details dd {
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+
+.region__title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.region__link {
+    box-shadow: 0 0 4px 1px rgba(0, 0, 0,0.1);
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: var(--el-bg);
+}
+
+.region__link:hover {
+    text-decoration: none;
+}
+
+.custom-alert {
+    font-size: 10px;
+}
+
+@media only screen and (max-width: 576px) {
+    .navbar-brand {
+        font-size: 16px;
+    }
+
+    .btn-custom {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .form-control,.dropdown  {
+        font-size: 12px;
+    }
+
+    .region__link {
+        font-size: 12px;
+    }
 }
